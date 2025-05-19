@@ -97,7 +97,7 @@ const galleryMarkup = images
 
 galleryList.insertAdjacentHTML('beforeend', galleryMarkup);  //вставити розмітку
 
-// 5. Делегування подій
+// 5. делегування подій
 galleryList.addEventListener('click', onGalleryClick);
 
 function onGalleryClick(event) {
@@ -110,7 +110,7 @@ function onGalleryClick(event) {
   openModal(largeImageURL);
 }
 
-//  7. Відкрити модальне вікно через basicLightbox.create
+//  7. відкрити модалку через basicLightbox.create
 function openModal(imageUrl) {
   const instance = basicLightbox.create(`<img src="${imageUrl}" width="800" height="600">`);
   instance.show();
