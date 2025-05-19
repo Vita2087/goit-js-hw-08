@@ -3,33 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Home Task 8</title>
+    <link href="https://cdn.jsdelivr.net/npm/basiclightbox@5.0.4/dist/basicLightbox.min.css" rel="stylesheet"/>
+    <link rel="./css/styles.css"/>
   </head>
+
   <body>
     <h1>Home Task 8</h1>
+    <ul class="gallery"></ul>
 
-<!-- В атрибуті src тега <img> вказуємо посилання на маленьку версію зображення.
-Для атрибута alt використовуємо опис зображення.
-Посилання на велике зображення повинно зберігатися в data-атрибуті source
- на елементі <img>, і вказуватися в href посилання.
-зображення огорнуте посиланням, у якого атрибут href вказує на шлях до файлу з зображенням. 
-Отже клік по ньому може викликати завантаження зображення на комп'ютер користувача. 
-Заборони цю поведінку за замовчуванням. -->
-
-    <ul class="gallery"><li class="gallery-item">
-      <a class="gallery-link" href="large-image.jpg">
-        <img
-          class="gallery-image"
-          src="small-image.jpg"
-          data-source="large-image.jpg"
-          alt="Image description"
-        />
-      </a>
-    </li>
-    </ul>
-
-
-
+    <script src="https://cdn.jsdelivr.net/npm/basiclightbox@5.0.4/dist/basicLightbox.min.js"></script>
     <script src="./js/gallery.js" type="module"></script>
   </body>
 </html>

@@ -1,1 +1,25 @@
 /* https://www.figma.com/design/ikD0S2P6gN6MKQUXfA11RG/HW-JavaScript--Copy-?node-id=3-941&p=f&t=LTI3njc7cUpgv7BM-0 */
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  
+  .gallery-item {
+    max-width: 300px;
+  }
+  
+  .gallery-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+  }
+
+  
+  

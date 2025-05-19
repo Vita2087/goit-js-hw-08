@@ -1,10 +1,3 @@
-// Для створення елементів галереї тобі знадобляться дані. Додай цей масив обє'ктів у свій JavaScript файл. 
-// Кожний об'єкт являє собою один елемент галереї.
-
-// preview — посилання на маленьку версію зображення для картки галереї
-// original — посилання на велику версію зображення для модального вікна
-// description — текстовий опис зображення, для атрибута alt малого зображення та підпису великого зображення в модалці.
-
 const images = [
   {
     preview:
@@ -70,3 +63,55 @@ const images = [
     description: 'Lighthouse Coast Sea',
   },
 ];
+
+// Для створення елементів галереї є масив обє'ктів. Кожний об'єкт являє собою один елемент галереї.
+// preview — посилання на маленьку версію зображення для картки галереї
+// original — посилання на велику версію зображення для модального вікна
+// description — текстовий опис зображення, для атрибута alt малого зображення та підпису великого зображення в модалці.
+
+// В атрибуті src тега <img> вказуємо посилання на маленьку версію зображення (preview).
+// Для атрибута alt викор опис зображення(description).
+// Посилання на велике зображення повинно зберігатися в data-атрибуті source на елементі <img>, і вказуватися в href посилання.
+// зображення огорнуте посиланням, у якого атрибут href вказує на шлях до файлу(original) з зображенням. 
+// Отже клік по ньому може викликати завантаження зображення на комп'ютер користувача. Заборони цю поведінку за замовчуванням.
+
+
+// 3. створити і вставити розмітку
+const galleryList = document.querySelector('.gallery');
+if (!galleryList) {console.log('error');}
+
+const galleryMarkup = images
+  .map(({ preview, original, description }) => {
+    return `<li class="gallery-item">
+      <a class="gallery-link" href="${original}">
+        <img
+          class="gallery-image"
+          src="${preview}"
+          data-source="${original}"
+          alt="${description}"
+        />
+      </a>
+    </li>`;
+  })
+  .join('');
+
+galleryList.insertAdjacentHTML('beforeend', galleryMarkup);  //вставити розмітку
+
+// 5. Делегування подій
+galleryList.addEventListener('click', onGalleryClick);
+
+function onGalleryClick(event) {
+  event.preventDefault();  //заборона дефолтного завантаження браузером
+
+  const isImage = event.target.classList.contains('gallery-image');
+  if (!isImage) return;
+
+  const largeImageURL = event.target.dataset.source;
+  openModal(largeImageURL);
+}
+
+//  7. Відкрити модальне вікно через basicLightbox.create
+function openModal(imageUrl) {
+  const instance = basicLightbox.create(`<img src="${imageUrl}" width="800" height="600">`);
+  instance.show();
+}
